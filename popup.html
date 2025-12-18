@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Extension Popup</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      margin: 0;
+      width: 320px;
+      min-height: 380px;
+      font-family: Arial, sans-serif;
+      background-color: #bdf6e7;
+      border-radius: 16px;
+      overflow: hidden;
+     }
+
+    .container {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+    }
+
+    .header img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 5px;
+    }
+
+    .header h1 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #059467;
+      margin: 0;
+    }
+
+    /* Form */
+    .form {
+      background-color: #edfdf9;
+      padding: 16px;
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Input group */
+    .input-group {
+      position: relative;
+    }
+
+    .input-group .icon {
+      position: absolute;
+      top: 50%;
+      left: 12px;
+      transform: translateY(-50%);
+      font-size: 16px;
+      color: #059467;
+      pointer-events: none;
+    }
+
+    .input-group input,
+    .input-group textarea {
+      width: 100%;
+      padding: 10px 12px 10px 40px;
+      font-size: 14px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      color: #525252;
+      box-sizing: border-box;
+      outline: none;
+    }
+
+    .input-group input:focus,
+    .input-group textarea:focus {
+      border-color: #059467;
+      box-shadow: 0 0 0 2px rgba(5, 148, 103, 0.3);
+    }
+
+    /* Textarea fix */
+    .input-group.textarea .icon {
+      top: 14px;
+      transform: none;
+    }
+
+    .input-group textarea {
+      resize: none;
+      min-height: 70px;
+    }
+
+    /* Button */
+    .submit-btn {
+      background-color: #059467;
+      color: #e8fcf3;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .submit-btn:hover {
+      transform: scale(1.05);
+      background-color: #047a58;
+    }
+
+  
+  .status {
+  font-family: Arial, sans-serif; /* same font */
+  font-size: 14px;                /* clean & readable */
+  text-align: center;
+  margin-top: 4px;
+  color: #dc2626;                 /* red only */
+  font-weight: 800;
+}
+
+.header img {
+  transition: transform 0.3s ease;
+}
+
+.header img:hover {
+  transform: scale(1.1);
+}
+
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <img src="icons/freepik__talk__5746-removebg-preview.png" alt="icon" />
+      <h1>Let's Connect</h1>
+    </div>
+
+    <!-- Form -->
+    <div class="form">
+      <div class="input-group">
+        <span class="icon">👤</span>
+        <input id="name" type="text" placeholder="Name" />
+      </div>
+
+      <div class="input-group">
+        <span class="icon">📧</span>
+        <input id="email" type="email" placeholder="Email" />
+      </div>
+
+      <div class="input-group textarea">
+        <span class="icon">💬</span>
+        <textarea id="message" placeholder="Message"></textarea>
+      </div>
+
+      <button id="submitBtn" class="submit-btn">Submit</button>
+    </div>
+
+    <p id="status" class="status"></p>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
