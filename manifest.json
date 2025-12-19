@@ -2,12 +2,12 @@
   "manifest_version": 3,
   "name": "React Form Extension",
   "version": "1.0",
+  "description": "A Chrome extension for managing and automating React forms",
   "permissions": ["storage"],
   "action": {
     "default_popup": "popup.html",
-    "default_icon":"icons/pngwing.png"
+    "default_icon": "icons/pngwing.png"
   },
- 
   "options_ui": {
     "page": "options.html",
     "open_in_tab": true
