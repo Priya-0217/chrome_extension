@@ -41,3 +41,6 @@ This is a simple Chrome extension that adds a custom icon to the Chrome toolbar 
 <img width="399" height="521" alt="Screenshot 2025-12-19 122533" src="https://github.com/user-attachments/assets/61384430-28d4-4ef6-8d63-42d6e766b79d" />
 
 7. The extension is now ready to use 🎉
+8. Here is the dasboard where it redirect
+<img width="1868" height="743" alt="image" src="https://github.com/user-attachments/assets/1d34bc11-606b-4022-a512-c63e0f375c01" />
+
