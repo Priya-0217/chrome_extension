@@ -1,13 +1,29 @@
-# My Chrome Extension
+# 📊 Chrome Extension - Form Submission Dashboard
+
 
 A modern Chrome extension with a beautiful gradient-themed dashboard to manage form submissions. Features a clean, professional interface with smooth animations and intuitive controls.
 
-## Features
+## ✨ Features
 
-* Custom icon in the Chrome toolbar
-* Popup page that opens when you click the icon
+### 🎨 **Modern UI Design**
+- **Gradient-Themed Dashboard**: Beautiful green gradient interface with smooth animations
+- **Interactive Form Popup**: Clean form with hover effects and real-time validation
+- **Responsive Design**: Works perfectly on all screen sizes
 
-## Installation
+
+### ⚡ **Core Functionality**
+- **Form Submission**: Capture name, email, and message through popup interface
+- **Submission Management**: View all submissions in organized dashboard table
+- **Bulk Operations**: Select multiple submissions for batch deletion
+- **Safe Deletion**: Confirmation dialogs prevent accidental data loss
+- **Persistent Storage**: Chrome Storage API for reliable data persistence
+
+### 🔧 **Technical Features**
+- **Manifest V3**: Uses latest Chrome Extension API
+- **Modular Architecture**: Well-documented, organized codebase
+- **Error Handling**: Comprehensive validation and error messages
+
+## 🚀 Installation
 
 1. Clone this repository:
 
