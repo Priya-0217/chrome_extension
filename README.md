@@ -1,6 +1,6 @@
 # My Chrome Extension
 
-This is a simple Chrome extension that adds a custom icon to the Chrome toolbar and opens a popup when clicked.
+A modern Chrome extension with a beautiful gradient-themed dashboard to manage form submissions. Features a clean, professional interface with smooth animations and intuitive controls.
 
 ## Features
 
