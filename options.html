@@ -1,34 +1,85 @@
+<!-- 
+  OPTIONS PAGE - Chrome Extension Dashboard
+  This HTML file serves as the entry point for the extension's dashboard/options page.
+  It provides a minimal structure where the dashboard JavaScript will render content.
+  
+  Key Features:
+  - Sets up the base HTML structure for the dashboard
+  - Provides a container (#options-root) for dynamic content
+  - Includes responsive design and theming
+  - Loads the compiled JavaScript module
+  
+  @file options.html
+  @version 1.0.0
+  @author Priya
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Character encoding for proper text display -->
   <meta charset="UTF-8" />
+  
+  <!-- Page title shown in browser tab -->
   <title>Extension Dashboard</title>
+  
+  <!-- Responsive viewport settings -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Theme color for browser UI (address bar on mobile browsers) -->
   <meta name="theme-color" content="#059467" />
   
+  <!-- Inline styles for immediate rendering -->
   <style>
+    /* Universal box-sizing for consistent element sizing */
     * {
       box-sizing: border-box;
     }
 
+    /* Base body styles */
     body {
       margin: 0;
       padding: 0;
-      min-height: 100vh;
+      min-height: 100vh; /* Full viewport height */
+      
+      /* Gradient background matching the extension theme */
       background: linear-gradient(135deg, #f0fdf4, #ecfeff);
+      
+      /* Font family stack for cross-platform consistency */
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      
+      /* Primary text color matching the theme */
       color: #046d58;
     }
 
+    /* Main container where dashboard will be rendered */
     #options-root {
-      min-height: 100vh;
+      min-height: 100vh; /* Ensures container fills full height */
     }
   </style>
 </head>
 <body>
+  <!-- 
+    ROOT CONTAINER FOR DASHBOARD
+    This empty div serves as the mount point where the JavaScript
+    will dynamically render the dashboard interface (table, buttons, modals).
+    
+    The dashboard.js file will populate this container with:
+    - Submission data table
+    - Action buttons (select all, delete)
+    - Modal dialogs
+    - Status messages
+  -->
   <div id="options-root"></div>
   
-  <!-- Change this line to add type="module" -->
+  <!-- 
+    JAVASCRIPT ENTRY POINT
+    Loads the compiled dashboard JavaScript as an ES module.
+    Type="module" enables modern JavaScript features and better organization.
+    
+    Note: This points to dist/options.js which is the compiled/built version
+    of your dashboard JavaScript code.
+  -->
   <script type="module" src="dist/options.js"></script>
 </body>
 </html>
