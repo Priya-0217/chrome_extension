@@ -1,3 +1,21 @@
+ /**
+ * Chrome Extension Dashboard Main Controller
+ * 
+ * This module handles the dashboard interface for managing form submissions.
+ * It provides a gradient-themed UI with CRUD operations and modal dialogs.
+ * 
+ * @file popup.js (Dashboard Section)
+ * @module DashboardController
+ * @author Priya
+ * @version 1.0.0
+ * @requires DOMContentLoaded event, Chrome Storage API
+ */
+
+/**
+ * Main dashboard initialization function
+ * Runs when the DOM is fully loaded to ensure all elements are available
+ */
+
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("options-root");
 
@@ -6,7 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // Inject table CSS (CSP-safe)
+   /**
+   * CSS Injection Function
+   * Injects all dashboard styles dynamically (CSP-safe method for Chrome extensions)
+   */
   const style = document.createElement("style");
   style.textContent = `
     /* Clean background for the entire dashboard */
@@ -340,8 +361,20 @@ document.addEventListener("DOMContentLoaded", () => {
   `;
   document.head.appendChild(style);
 
-  let submissions = [];
-  let selectedIndexes = [];
+/**
+   * Application State Variables
+   * These track the current state of the dashboard
+   */
+
+  let submissions = [];  // Array of all form submission objects
+  let selectedIndexes = [];  // Array of indices currently selected by user
+
+
+  /**
+   * Load Submissions from Chrome Storage
+   * Retrieves saved submissions from chrome.storage.local API
+   * Calls renderDashboard() after data is loaded
+   */
 
   function loadSubmissions() {
     chrome.storage.local.get(["submissions"], (res) => {
@@ -350,7 +383,12 @@ document.addEventListener("DOMContentLoaded", () => {
       renderDashboard();
     });
   }
-
+ /**
+   * Delete a Single Submission
+   * Removes one submission by index and updates storage
+   * 
+   * @param {number} index - The array index of the submission to delete
+   */
   function deleteSubmission(index) {
     console.log("Deleting index:", index);
     
@@ -365,7 +403,10 @@ document.addEventListener("DOMContentLoaded", () => {
       renderDashboard();
     });
   }
-
+ /**
+   * Delete Multiple Selected Submissions
+   * Batch deletion of all currently selected submissions
+   */
   function deleteSelectedSubmissions() {
     console.log("Deleting selected indexes:", selectedIndexes);
     if (selectedIndexes.length === 0) return;
@@ -386,6 +427,12 @@ document.addEventListener("DOMContentLoaded", () => {
       renderDashboard();
     });
   }
+  /**
+   * Toggle Selection State for a Submission
+   * Adds or removes a submission from the selection array
+   * 
+   * @param {number} index - The index of the submission to toggle
+   */
 
   function toggleSelectItem(index) {
     console.log("Toggling index:", index);
@@ -405,6 +452,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     renderDashboard();
   }
+
+   /**
+   * Show Confirmation Modal for Deletion
+   * Displays a modal dialog to confirm deletion action
+   * 
+   * @param {number|null} index - Index for single deletion, null for bulk deletion
+   */
 
   function showDeleteModal(index = null) {
     const modal = document.createElement('div');
@@ -451,6 +505,13 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.appendChild(modal);
   }
 
+   /**
+   * Format Date String for Display
+   * Converts ISO date string to human-readable format
+   * 
+   * @param {string} dateString - ISO format date string
+   * @returns {string} Formatted date or "—" if invalid/empty
+   */
   function formatDate(dateString) {
     if (!dateString) return "—";
     try {
@@ -463,6 +524,12 @@ document.addEventListener("DOMContentLoaded", () => {
       return "—";
     }
   }
+
+/**
+   * Render Dashboard UI
+   * Generates and displays the complete dashboard interface
+   * Handles empty state, table rendering, and event listener attachment
+   */
 
   function renderDashboard() {
     root.innerHTML = `
