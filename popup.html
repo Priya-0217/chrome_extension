@@ -1,177 +1,229 @@
+<!-- 
+  POPUP INTERFACE - Chrome Extension Form Submission
+  This HTML file defines the popup window that appears when clicking the extension icon.
+  Contains a form for users to submit their name, email, and message.
+  
+  Key Features:
+  - Clean, visually appealing form with gradient background
+  - Animated hover effects and transitions
+  - Responsive design for the popup window
+  - Status message display for user feedback
+  
+  @file popup.html
+  @version 1.0.0
+  @author Priya
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Character encoding for proper text display -->
   <meta charset="UTF-8" />
+  
+  <!-- Popup window title -->
   <title>Extension Popup</title>
+  
+  <!-- Responsive viewport settings -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Inline styles for immediate rendering (CSP-safe for Chrome extensions) -->
   <style>
+    /* Base body styling for popup window */
     body {
       margin: 0;
-      width: 320px;
-      min-height: 380px;
+      width: 320px;           /* Fixed width for Chrome popup */
+      min-height: 380px;      /* Minimum height for form display */
       font-family: Arial, sans-serif;
-      background-color: #bdf6e7;
-      border-radius: 16px;
-      overflow: hidden;
+      background-color: #bdf6e7;  /* Light green background */
+      border-radius: 16px;    /* Rounded corners for modern look */
+      overflow: hidden;       /* Prevent content overflow */
      }
 
+    /* Main content container */
     .container {
       padding: 15px;
       display: flex;
-      flex-direction: column;
-      gap: 10px;
+      flex-direction: column; /* Vertical layout */
+      gap: 10px;              /* Space between elements */
     }
 
-    /* Header */
+    /* ===== HEADER SECTION ===== */
     .header {
-      text-align: center;
+      text-align: center;     /* Center align header content */
     }
 
+    /* Extension icon */
     .header img {
       width: 60px;
       height: 60px;
       margin-bottom: 5px;
     }
 
+    /* Main heading */
     .header h1 {
       font-size: 20px;
       font-weight: 600;
-      color: #059467;
-      margin: 0;
+      color: #059467;         /* Brand green color */
+      margin: 0;              /* Remove default margin */
     }
 
-    /* Form */
+    /* ===== FORM SECTION ===== */
     .form {
-      background-color: #edfdf9;
+      background-color: #edfdf9;  /* Light form background */
       padding: 16px;
       border-radius: 14px;
       display: flex;
-      flex-direction: column;
-      gap: 14px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      flex-direction: column;     /* Stack form elements vertically */
+      gap: 14px;                  /* Space between form fields */
+      transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effects */
     }
 
+    /* Hover effect for the entire form */
     .form:hover {
-      transform: scale(1.03);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      transform: scale(1.03);     /* Slight zoom on hover */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Shadow on hover */
     }
 
-    /* Input group */
+    /* ===== INPUT FIELD STYLING ===== */
     .input-group {
-      position: relative;
+      position: relative;     /* For positioning icons inside inputs */
     }
 
+    /* Icon inside input fields */
     .input-group .icon {
       position: absolute;
       top: 50%;
       left: 12px;
-      transform: translateY(-50%);
+      transform: translateY(-50%); /* Perfect vertical centering */
       font-size: 16px;
-      color: #059467;
-      pointer-events: none;
+      color: #059467;              /* Match brand color */
+      pointer-events: none;        /* Prevent icon from blocking clicks */
     }
 
+    /* Input and textarea base styling */
     .input-group input,
     .input-group textarea {
       width: 100%;
-      padding: 10px 12px 10px 40px;
+      padding: 10px 12px 10px 40px; /* Extra left padding for icon */
       font-size: 14px;
       border-radius: 8px;
       border: 1px solid #ccc;
       color: #525252;
-      box-sizing: border-box;
-      outline: none;
+      box-sizing: border-box;      /* Include padding in width calculation */
+      outline: none;               /* Remove default browser outline */
     }
 
+    /* Focus state for inputs */
     .input-group input:focus,
     .input-group textarea:focus {
-      border-color: #059467;
-      box-shadow: 0 0 0 2px rgba(5, 148, 103, 0.3);
+      border-color: #059467;               /* Green border on focus */
+      box-shadow: 0 0 0 2px rgba(5, 148, 103, 0.3); /* Green glow effect */
     }
 
-    /* Textarea fix */
+    /* ===== TEXTAREA SPECIFIC STYLING ===== */
+    /* Adjust icon position for textarea (multi-line) */
     .input-group.textarea .icon {
       top: 14px;
-      transform: none;
+      transform: none;  /* Override the translateY from regular inputs */
     }
 
+    /* Textarea specific styling */
     .input-group textarea {
-      resize: none;
-      min-height: 70px;
+      resize: none;         /* Disable manual resizing */
+      min-height: 70px;     /* Minimum height for message field */
     }
 
-    /* Button */
+    /* ===== SUBMIT BUTTON ===== */
     .submit-btn {
-      background-color: #059467;
-      color: #e8fcf3;
+      background-color: #059467;   /* Brand green */
+      color: #e8fcf3;              /* Light text for contrast */
       border: none;
       padding: 10px;
       border-radius: 8px;
       font-size: 15px;
       font-weight: 500;
       cursor: pointer;
-      transition: transform 0.2s ease, background-color 0.2s ease;
+      transition: transform 0.2s ease, background-color 0.2s ease; /* Smooth transitions */
     }
 
+    /* Button hover effect */
     .submit-btn:hover {
-      transform: scale(1.05);
-      background-color: #047a58;
+      transform: scale(1.05);        /* Slight grow on hover */
+      background-color: #047a58;     /* Darker green on hover */
     }
 
-  
-  .status {
-  font-family: Arial, sans-serif; /* same font */
-  font-size: 14px;                /* clean & readable */
-  text-align: center;
-  margin-top: 4px;
-  color: #dc2626;                 /* red only */
-  font-weight: 800;
-}
+    /* ===== STATUS MESSAGE STYLING ===== */
+    /* Status message display (for success/error feedback) */
+    .status {
+      font-family: Arial, sans-serif; /* Consistent font */
+      font-size: 14px;                /* Readable size */
+      text-align: center;
+      margin-top: 4px;
+      color: #dc2626;                 /* Red color for error messages */
+      font-weight: 800;               /* Bold for visibility */
+    }
 
-.header img {
-  transition: transform 0.3s ease;
-}
+    /* ===== ICON ANIMATION ===== */
+    /* Hover animation for header icon */
+    .header img {
+      transition: transform 0.3s ease; /* Smooth scaling transition */
+    }
 
-.header img:hover {
-  transform: scale(1.1);
-}
-
-
+    .header img:hover {
+      transform: scale(1.1);           /* Slight zoom on hover */
+    }
   </style>
 </head>
 
 <body>
+  <!-- Main content container -->
   <div class="container">
-    <!-- Header -->
+    <!-- ===== HEADER SECTION ===== -->
     <div class="header">
+      <!-- Extension icon with hover animation -->
       <img src="icons/freepik__talk__5746-removebg-preview.png" alt="icon" />
+      <!-- Main heading -->
       <h1>Let's Connect</h1>
     </div>
+    
 
-    <!-- Form -->
+    <!-- ===== FORM SECTION ===== -->
     <div class="form">
+      <!-- Name input field -->
       <div class="input-group">
-        <span class="icon">👤</span>
+        <span class="icon">👤</span>  <!-- Person icon -->
         <input id="name" type="text" placeholder="Name" />
       </div>
 
+      <!-- Email input field -->
       <div class="input-group">
-        <span class="icon">📧</span>
+        <span class="icon">📧</span>  <!-- Email icon -->
         <input id="email" type="email" placeholder="Email" />
       </div>
 
+      <!-- Message textarea field -->
       <div class="input-group textarea">
-        <span class="icon">💬</span>
+        <span class="icon">💬</span>  <!-- Message icon -->
         <textarea id="message" placeholder="Message"></textarea>
       </div>
 
+      <!-- Submit button -->
       <button id="submitBtn" class="submit-btn">Submit</button>
     </div>
 
+    <!-- ===== STATUS MESSAGE DISPLAY ===== -->
+    <!-- This element shows success/error messages from JavaScript -->
     <p id="status" class="status"></p>
   </div>
 
+  <!-- 
+    JAVASCRIPT LOGIC
+    Loads the popup.js file which handles:
+    - Form validation
+    - Submission to Chrome storage
+    - Status message updates
+    - Dashboard redirection
+  -->
   <script src="popup.js"></script>
 </body>
 </html>
